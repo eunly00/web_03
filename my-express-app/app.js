@@ -36,14 +36,29 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerJsDoc = require('swagger-jsdoc');
 
 const swaggerOptions = {
-    definition: {
-        openapi: '3.0.0',
-        info: {
-            title: 'My API',
-            version: '1.0.0',
-        },
-    },
-    apis: ['./routes/*.js'], // API 경로
+  definition: {
+      openapi: '3.0.0',
+      info: {
+          title: 'My API',
+          version: '1.0.0',
+      },
+      components: {
+          securitySchemes: {
+              bearerAuth: {
+                  type: 'http',
+                  scheme: 'bearer',
+                  bearerFormat: 'JWT',
+              },
+          },
+      },
+
+      security: [
+          {
+              bearerAuth: [],
+          },
+      ],
+  },
+  apis: ['./routes/*.js'],
 };
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);

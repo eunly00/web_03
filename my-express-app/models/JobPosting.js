@@ -30,7 +30,7 @@ const JobPosting = sequelize.define('JobPosting', {
         allowNull: true,
     },
     salary: {
-        type: DataTypes.DECIMAL(10, 2),
+        type: DataTypes.STRING(100),
         allowNull: true,
     },
     employment_type: {
@@ -41,6 +41,16 @@ const JobPosting = sequelize.define('JobPosting', {
         type: DataTypes.DATE,
         allowNull: true,
         defaultValue: DataTypes.NOW,
+    },
+    salary_text: {
+        type: DataTypes.STRING(100),
+        allowNull: true,
+        
+    },
+    view_count: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: 0, // 기본값 0
     },
 }, {
     tableName: 'job_postings', // 테이블 이름

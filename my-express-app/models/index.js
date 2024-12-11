@@ -3,6 +3,9 @@ const Company = require('./Company');
 const Application = require('./Application');
 const Bookmark = require('./Bookmark');
 const User = require('./User');
+const JobTag = require('./JobTag');
+const Notification = require('./Notification');
+const UserActivity = require('./UserActivity');
 
 // JobPosting과 Company 관계 설정
 JobPosting.belongsTo(Company, {
@@ -59,10 +62,26 @@ Bookmark.belongsTo(JobPosting, {
     as: 'jobPosting' // Bookmark에서 참조할 때 'jobPosting' alias 사용
 });
 
+
+// JobTag 관계 설정
+JobPosting.hasMany(JobTag, { foreignKey: 'job_posting_id', as: 'tags' });
+JobTag.belongsTo(JobPosting, { foreignKey: 'job_posting_id', as: 'jobPosting' });
+
+// Notification 관계 설정
+User.hasMany(Notification, { foreignKey: 'user_id', as: 'notifications' });
+Notification.belongsTo(User, { foreignKey: 'user_id', as: 'user' });
+
+// UserActivity 관계 설정
+User.hasMany(UserActivity, { foreignKey: 'user_id', as: 'activities' });
+UserActivity.belongsTo(User, { foreignKey: 'user_id', as: 'user' });
+
 module.exports = {
     User,
     JobPosting,
     Company,
     Application,
     Bookmark,
+    JobTag,
+    Notification,
+    UserActivity,
 };

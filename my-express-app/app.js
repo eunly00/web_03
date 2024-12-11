@@ -31,6 +31,9 @@ app.use('/users', usersRouter);
 const jobPostingsRouter = require('./routes/jobPostings');
 app.use('/job-postings', jobPostingsRouter);
 const applicationsRouter = require('./routes/applications');
+
+const add_apiRouter = require('./routes/add_api');
+app.use('/api',add_apiRouter);
 app.use('/applications', applicationsRouter);
 const swaggerUi = require('swagger-ui-express');
 const swaggerJsDoc = require('swagger-jsdoc');

@@ -31,12 +31,20 @@ app.use('/users', usersRouter);
 const jobPostingsRouter = require('./routes/jobPostings');
 app.use('/job-postings', jobPostingsRouter);
 const applicationsRouter = require('./routes/applications');
-
-const add_apiRouter = require('./routes/add_api');
-app.use('/api',add_apiRouter);
 app.use('/applications', applicationsRouter);
+
+const faqRouter = require('./routes/faq');
+const feedbackRouter = require('./routes/feedback');
+const announcementRouter = require('./routes/announcement');
+
+app.use('/faqs', faqRouter);
+app.use('/feedback', feedbackRouter);
+app.use('/announcements', announcementRouter);
+
+
 const swaggerUi = require('swagger-ui-express');
 const swaggerJsDoc = require('swagger-jsdoc');
+
 
 const swaggerOptions = {
   definition: {

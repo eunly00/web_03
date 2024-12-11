@@ -19,11 +19,11 @@ const JobPosting = sequelize.define('JobPosting', {
     },
     title: {
         type: DataTypes.STRING(100),
-        allowNull: false,
+        allowNull: true,
     },
     description: {
         type: DataTypes.TEXT,
-        allowNull: false,
+        allowNull: true,
     },
     location: {
         type: DataTypes.STRING(100),
@@ -39,7 +39,7 @@ const JobPosting = sequelize.define('JobPosting', {
     },
     posted_at: {
         type: DataTypes.DATE,
-        allowNull: false,
+        allowNull: true,
         defaultValue: DataTypes.NOW,
     },
 }, {
